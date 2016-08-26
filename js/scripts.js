@@ -1,9 +1,10 @@
 //<!-- Back End -->
 
 // <!--************pizza contstructor************-->
-function Pizza (size, topping, cost, ) {
+function Pizza (size, topping, cost) {
   this.psize = size;
   this.ptopping = topping;
+  this.pcost = cost;
 }
 
 Pizza.prototype.pizzaCost = function (psize, ptopping) {
@@ -20,7 +21,7 @@ Pizza.prototype.pizzaCost = function (psize, ptopping) {
       cost +=2
     }
   }
-  return cost;
+  this.pcost = cost;
 }
 
 function newPizza (size, topping) {
@@ -34,15 +35,17 @@ function newPizza (size, topping) {
 $(document).ready(function(){
   $('#pizzaOptions').submit(function(event){
     event.preventDefault();
+// <!--************gather info into object************-->
     var size = $('input[name=size]:checked').val();
     var topping = [];
+    cost = '';
     $('input[type=checkbox]:checked').each(function(i,e){topping.push( $(e).attr('value'))
       })
-    pizza = new Pizza (size, topping);
+    pizza = new Pizza (size, topping, cost);
     cost = pizza.pizzaCost();
+// <!--************reset form************-->
     $('#pizzaOptions')[0].reset();;
-    console.log('Your pizza will cost $' + cost);
-    $('#pizzaList').append('<li>' + 'Pizza 1 $' + cost + '</li>')
+    // $('#pizzaList').append('<li>' + pizza.size 'Pizza $' + cost + '</li>')
   });
   $('#addPizza').click(function(event) {
     event.preventDefault();
