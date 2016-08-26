@@ -1,6 +1,16 @@
 //<!-- Back End -->
+// <!--************order contstructor/prototype************-->
+function Order (pizzas, cost) {
+  this.pizzaArray = []
+  this.costArray = []
+}
 
-// <!--************pizza contstructor************-->
+Order.prototype.orderInfo = function (pizza, cost) {
+  Order.pizzaArray.push(pizza);
+  Order.costArray.push(cost);
+}
+
+// <!--************pizza contstructor/prototype************-->
 function Pizza (size, topping, cost) {
   this.psize = size;
   this.ptopping = topping;
@@ -24,43 +34,22 @@ Pizza.prototype.pizzaCost = function (psize, ptopping) {
   this.pcost = cost;
 }
 
-function newPizza (size, topping) {
-  var pizzaNumber = 1;
-  pizzaNumber ++;
-  next_pizza = new Pizza (size, topping);
-  return next_pizza;
-}
-
 //<!-- Front End  -->
 $(document).ready(function(){
+  Order = new Order();
   $('#pizzaOptions').submit(function(event){
     event.preventDefault();
 // <!--************gather info into object************-->
     var size = $('input[name=size]:checked').val();
     var topping = [];
-    cost = '';
+    var cost = '';
     $('input[type=checkbox]:checked').each(function(i,e){topping.push( $(e).attr('value'))
       })
     pizza = new Pizza (size, topping, cost);
     cost = pizza.pizzaCost();
-// <!--************reset form************-->
+// <!--************reset form/make li************-->
     $('#pizzaOptions')[0].reset();;
     $('#pizzaList').append('<li>' + pizza.psize + ' ' + pizza.ptopping.length + ' topping pizza: $' + pizza.pcost + '</li>');
-  });
-  $('#addPizza').click(function(event) {
-    event.preventDefault();
-    var pizzaArray = [pizza]
-
-    var size = $('input[name=size]:checked').val();
-    var topping = [];
-    $('input[type=checkbox]:checked').each(function(i,e){topping.push( $(e).attr('value'))
-      })
-    console.log(size,topping);
-    pizzaArray.push(newPizza(size,topping));
-    // newPizza(size, topping)
-    console.log('registered click');
-
-    debugger;
-    // next_pizza = new Pizza (size, topping);
+    Order.orderInfo(pizza, pizza.pcost);
   });
 });
