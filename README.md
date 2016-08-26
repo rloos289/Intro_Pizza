@@ -4,13 +4,12 @@
 
 ## Description
 
-_A template website that has confirmed functional Javascript, CSS, Bootstrap (v3.3.7), and jQuery(v3.1.0)_
+_A website for ordering pizzas online_
 
 ## Setup/Installation Requirements
 
 * _Copy the repository from GitHub_
 * _Open the index.html file a browser of your choice_
-* _Open the console to confirm that javascript and jQuery are running_
 
 ##BDD
 
@@ -27,7 +26,7 @@ _A template website that has confirmed functional Javascript, CSS, Bootstrap (v3
 * _print final cost to screen_
 
 ## GitHub link
-https://github.com/rloos289/Template
+https://github.com/rloos289/Pizza
 
 ## Licensing
 
