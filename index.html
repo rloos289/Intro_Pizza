@@ -12,7 +12,7 @@
   <body>
     <div class="container">
 <!--************size************-->
-      <form>
+      <form id='pizzaOptions'>
         <div class="col-xs-6">
           <h4>Choose your size</h4>
           <label class="radio-inline">
@@ -24,29 +24,34 @@
           <label class="radio-inline">
             <input type='radio' name='size' value='large'>Large
           </label>
-        </div>
-<!--************toppings************-->
-        <div class="col-xs-6">
+  <!--************toppings************-->
           <h4>Choose your toppings</h4>
           <div class='checkbox'>
-            <label><input type='checkbox' name='toppings' class='Checkbox' value='pepperoni'>Pepperoni</label>
+            <label><input type='checkbox' name='toppings' class='checkbox' value='pepperoni'>Pepperoni</label>
           </div>
           <div class='checkbox'>
-            <label><input type='checkbox' name='toppings' class='Checkbox' value='olives'>Olives</label>
+            <label><input type='checkbox' name='toppings' class='checkbox' value='olives'>Olives</label>
           </div>
           <div class='checkbox'>
-            <label><input type='checkbox' name='toppings' class='Checkbox' value='bacon'>Bacon</label>
+            <label><input type='checkbox' name='toppings' class='checkbox' value='bacon'>Bacon</label>
           </div>
           <div class='checkbox'>
-            <label><input type='checkbox' name='toppings' class='Checkbox' value='mushrooms'>Mushrooms</label>
+            <label><input type='checkbox' name='toppings' class='checkbox' value='mushrooms'>Mushrooms</label>
           </div>
           <div class='checkbox'>
-            <label><input type='checkbox' name='toppings' class='Checkbox' value='spinach'>Spinach</label>
+            <label><input type='checkbox' name='toppings' class='checkbox' value='spinach'>Spinach</label>
           </div>
+          <button class='btn btn-danger center-block' type='submit' id='finishPizza'>Done</button>
+          <button class='btn btn-success center-block' id='addPizza'>Add Pizza</button>
         </div>
       </form>
-<!--************Totals************-->
-      <div class="col-xs-12">
+<!--************Summary************-->
+      <div class="col-xs-6">
+        <ol id='pizzaList'></ol>
+      </div>
+<!--************Interaction************-->
+      <div class="col-xs-12" id='interface'>
+        <p>Done with your order? click submit.</p>
         <button class='btn btn-submit center-block' id='submitButton'>Submit</button>
       </div>
       </div>
