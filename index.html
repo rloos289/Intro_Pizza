@@ -10,38 +10,45 @@
     <title>Ryan's Pizzas</title>
   </head>
   <body>
-<!--************size************-->
     <div class="container">
+<!--************size************-->
       <form>
-        <p>Choose your size</p>
-        <label class="radio-inline">
-          <input type='radio' name='size' value='small'>Small
-        </label>
-        <label class="radio-inline">
-          <input type='radio' name='size' value='medium'>Medium
-        </label>
-        <label class="radio-inline">
-          <input type='radio' name='size' value='large'>Large
-        </label>
+        <div class="col-xs-6">
+          <h4>Choose your size</h4>
+          <label class="radio-inline">
+            <input type='radio' name='size' value='small'>Small
+          </label>
+          <label class="radio-inline">
+            <input type='radio' name='size' value='medium'>Medium
+          </label>
+          <label class="radio-inline">
+            <input type='radio' name='size' value='large'>Large
+          </label>
+        </div>
 <!--************toppings************-->
-          <p>Choose your toppings</p>
-          <label>
+        <div class="col-xs-6">
+          <h4>Choose your toppings</h4>
+          <label class='radio-inline'>
             <input type='radio' name='topping' value='pepperoni'>Pepperoni
           </label>
-          <label>
+          <label class='radio-inline'>
             <input type='radio' name='topping' value='olives'>Olives
           </label>
-          <label>
+          <label class='radio-inline'>
             <input type='radio' name='topping' value='bacon'>Bacon
           </label>
-          <label>
+          <label class='radio-inline'>
             <input type='radio' name='topping' value='mushrooms'>Mushrooms
           </label>
-          <label>
+          <label class='radio-inline'>
             <input type='radio' name='topping' value='spinach'>Spinach
           </label>
-          <button class='btn btn-submit' id='submitButton'>Submit</button>
-        <form>
+        </div>
+      </form>
+<!--************Totals************-->
+      <div class="col-xs-12">
+        <button class='btn btn-submit center-block' id='submitButton'>Submit</button>
+      </div>
       </div>
     </div>
   </body>

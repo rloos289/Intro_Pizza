@@ -26,12 +26,10 @@ $(document).ready(function(){
   $('#submitButton').click(function(event){
     event.preventDefault();
     var size = $('input[name=size]:checked').val();
-    console.log(size);
     var toppings = [];
     var topping = $('input[name=topping]:checked').val();
-    console.log(topping);
     pizza = new Pizza (size, topping);
     cost = pizza.pizzaCost();
-    console.log(cost);
+    alert('Your pizza will cost $' + cost);
   });
 });
