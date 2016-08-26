@@ -2,3 +2,8 @@
   margin-top: 40px;
   text-align: center;
 }
+
+#reciept {
+  margin-top: 40px;
+  display: none;
+}

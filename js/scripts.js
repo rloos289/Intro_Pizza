@@ -10,6 +10,15 @@ Order.prototype.orderInfo = function (pizza, cost) {
   Order.costArray.push(cost);
 }
 
+function getCost(total, num) {
+  return total + num;
+}
+
+Order.prototype.orderCost = function () {
+  var finalCost = Order.costArray.reduce(getCost);
+  return finalCost
+}
+
 // <!--************pizza contstructor/prototype************-->
 function Pizza (size, topping, cost) {
   this.psize = size;
@@ -40,31 +49,42 @@ $(document).ready(function(){
   pizzaNumber = 0
   $('#pizzaOptions').submit(function(event){
     event.preventDefault();
-// <!--************gather info into object************-->
-    var topping = [];
+//gather info for object
+    var toppings = [];
     var cost = '';
     var size = $('input[name=size]:checked').val();
-    var toppings = '';
-    $('input[type=checkbox]:checked').each(function(i,e){topping.push( $(e).attr('value'))
+    var toppingOrCheese = '';
+    $('input[type=checkbox]:checked').each(function(i,e) {
+      toppings.push( $(e).attr('value'))
       })
     if (!size) {
       alert('please choose a pizza size');
     } else {
-    pizza = new Pizza (size, topping, cost);
-    cost = pizza.pizzaCost();
-// <!--************reset form/make li************-->
-    $('#pizzaOptions')[0].reset();;
-    if (pizza.ptopping.length) {
-      toppings = pizza.ptopping.length + ' topping'
-    } else {
-      toppings = 'cheese'
-    }
-    pizzaNumber += 1 ;
-    $('#pizzaList').append("<li class='plist' id=pizza" + pizzaNumber + '>' + pizza.psize + ' ' + toppings + ' pizza: $' + pizza.pcost + '</li>');
-    Order.orderInfo(pizza, pizza.pcost);
+      pizza = new Pizza (size, toppings, cost);
+      cost = pizza.pizzaCost();
+//reset entry options
+      $('#pizzaOptions')[0].reset();;
+//append page with pizzas
+      if (pizza.ptopping.length) {
+      toppingOrCheese = pizza.ptopping.length + ' topping'
+      } else {
+        toppingOrCheese = 'cheese'
+      }
+      pizzaNumber += 1 ;
+      $('#pizzaList').append("<li class='plist' id=pizza" + pizzaNumber + '>' + pizza.psize + ' ' + toppingOrCheese + ' pizza: $' + pizza.pcost + '</li>');
+//add pizza to Order
+      Order.orderInfo(pizza, pizza.pcost);
   }
-  $('.plist').click(function() {
-    console.log(this.id);
+  // $('.plist').click(function() {
+  //   console.log(this.id);
+  // });
   });
+//get total cost
+  $('#submitButton').click(function(event) {
+  event.preventDefault()
+    if (Order.orderCost())
+    $('#reciept').show();
+    $('#totalcost').append(Order.orderCost());
+    $('#submitButton').hide();
   });
 });

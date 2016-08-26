@@ -44,17 +44,16 @@
           <button class='btn btn-danger' type='submit' id='finishPizza'>Add this pizza</button>
         </div>
       </form>
-<!--************Summary************-->
+<!--************Your Order************-->
       <div class="col-xs-6">
-        <p>Your order</p>
+        <h4>Your order</h4>
         <ol id='pizzaList'></ol>
       </div>
 <!--************Interaction************-->
       <div class="col-xs-12" id='interface'>
-        <p>Done with your order? click submit.</p>
-        <button class='btn btn-submit center-block' id='submitButton'>Submit</button>
-        <p id='cost'>
-
+        <button class='btn btn-submit center-block' id='submitButton'>Click here for total</button>
+        <p id='reciept'>
+          Your total comes to $<span id='totalcost'></span>
         </p>
       </div>
       </div>
