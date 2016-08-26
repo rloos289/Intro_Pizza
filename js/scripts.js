@@ -37,6 +37,7 @@ Pizza.prototype.pizzaCost = function (psize, ptopping) {
 //<!-- Front End  -->
 $(document).ready(function(){
   Order = new Order();
+  pizzaNumber = 0
   $('#pizzaOptions').submit(function(event){
     event.preventDefault();
 // <!--************gather info into object************-->
@@ -58,8 +59,12 @@ $(document).ready(function(){
     } else {
       toppings = 'cheese'
     }
-    $('#pizzaList').append('<li>' + pizza.psize + ' ' + toppings + ' pizza: $' + pizza.pcost + '</li>');
+    pizzaNumber += 1 ;
+    $('#pizzaList').append("<li class='plist' id=pizza" + pizzaNumber + '>' + pizza.psize + ' ' + toppings + ' pizza: $' + pizza.pcost + '</li>');
     Order.orderInfo(pizza, pizza.pcost);
   }
+  $('.plist').click(function() {
+    console.log(this.id);
+  });
   });
 });
