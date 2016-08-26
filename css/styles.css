@@ -3,7 +3,38 @@
   text-align: center;
 }
 
-#reciept {
+.end {
   margin-top: 40px;
   display: none;
+  text-align: center;
+}
+
+.jumbotron {
+  background-color: red;
+  font-style: italic;
+  font-family: 'Paprika', cursive;
+  text-align: center;
+  color: black;
+}
+
+body {
+  /*background-image: url('../img/mario.png');*/
+  font-family: 'Paprika', cursive;
+}
+
+#yourOrder h4{
+  text-align: center;
+}
+
+li {
+  list-style-type:none
+}
+
+#mario {
+  text-decoration: line-through;
+}
+
+img {
+  max-width: 80%;
+  max-height: 80%;
 }

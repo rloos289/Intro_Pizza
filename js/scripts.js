@@ -81,10 +81,20 @@ $(document).ready(function(){
   });
 //get total cost
   $('#submitButton').click(function(event) {
-  event.preventDefault()
-    if (Order.orderCost())
-    $('#reciept').show();
+  event.preventDefault();
+    $('.end').show();
     $('#totalcost').append(Order.orderCost());
     $('#submitButton').hide();
+  });
+//restart
+  $('#restartOrder').click(function(event) {
+    event.preventDefault();
+    $('#pizzaOptions')[0].reset();
+    $('li').remove();
+    $('#totalcost').empty();
+    $('.end').hide();
+    $('#submitButton').show();
+    Order.costArray = [];
+    Order.pizzaArray = [];
   });
 });
