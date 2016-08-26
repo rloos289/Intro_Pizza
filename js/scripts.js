@@ -45,7 +45,7 @@ $(document).ready(function(){
     cost = pizza.pizzaCost();
 // <!--************reset form************-->
     $('#pizzaOptions')[0].reset();;
-    // $('#pizzaList').append('<li>' + pizza.size 'Pizza $' + cost + '</li>')
+    $('#pizzaList').append('<li>' + pizza.psize + ' ' + pizza.ptopping.length + ' topping pizza: $' + pizza.pcost + '</li>');
   });
   $('#addPizza').click(function(event) {
     event.preventDefault();
