@@ -2,12 +2,23 @@
 
 // <!--************pizza contstructor************-->
 function Pizza (size, topping) {
-  this.pizzaSize = size;
-  this.pizzaTopping = topping;
+  this.psize = size;
+  this.ptopping = topping;
 }
 
-Pizza.prototype.createPizza = function (size, topping) {
-
+Pizza.prototype.pizzaCost = function (psize, ptopping) {
+  var cost = 0
+  if (this.psize === 'small') {
+    cost += 8
+  } else if (this.psize === 'medium') {
+    cost += 12
+  } else if (this.psize === 'large') {
+    cost += 15
+  }
+  if (this.ptopping) {
+    cost +=2
+  }
+  return cost;
 }
 
 //<!-- Front End  -->
@@ -20,5 +31,7 @@ $(document).ready(function(){
     var topping = $('input[name=topping]:checked').val();
     console.log(topping);
     pizza = new Pizza (size, topping);
+    cost = pizza.pizzaCost();
+    console.log(cost);
   });
 });
