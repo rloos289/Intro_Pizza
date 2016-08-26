@@ -40,16 +40,26 @@ $(document).ready(function(){
   $('#pizzaOptions').submit(function(event){
     event.preventDefault();
 // <!--************gather info into object************-->
-    var size = $('input[name=size]:checked').val();
     var topping = [];
     var cost = '';
+    var size = $('input[name=size]:checked').val();
+    var toppings = '';
     $('input[type=checkbox]:checked').each(function(i,e){topping.push( $(e).attr('value'))
       })
+    if (!size) {
+      alert('please choose a pizza size');
+    } else {
     pizza = new Pizza (size, topping, cost);
     cost = pizza.pizzaCost();
 // <!--************reset form/make li************-->
     $('#pizzaOptions')[0].reset();;
-    $('#pizzaList').append('<li>' + pizza.psize + ' ' + pizza.ptopping.length + ' topping pizza: $' + pizza.pcost + '</li>');
+    if (pizza.ptopping.length) {
+      toppings = pizza.ptopping.length + ' topping'
+    } else {
+      toppings = 'cheese'
+    }
+    $('#pizzaList').append('<li>' + pizza.psize + ' ' + toppings + ' pizza: $' + pizza.pcost + '</li>');
     Order.orderInfo(pizza, pizza.pcost);
+  }
   });
 });
