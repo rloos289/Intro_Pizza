@@ -16,7 +16,9 @@ Pizza.prototype.pizzaCost = function (psize, ptopping) {
     cost += 15
   }
   if (this.ptopping) {
-    cost +=2
+    for (var i = 0; i < this.ptopping.length; i++) {
+      cost +=2
+    }
   }
   return cost;
 }
@@ -26,10 +28,11 @@ $(document).ready(function(){
   $('#submitButton').click(function(event){
     event.preventDefault();
     var size = $('input[name=size]:checked').val();
-    var toppings = [];
-    var topping = $('input[name=topping]:checked').val();
+    var topping = [];
+    $('input[type=checkbox]:checked').each(function(i,e){topping.push( $(e).attr('value'))
+})
     pizza = new Pizza (size, topping);
     cost = pizza.pizzaCost();
-    alert('Your pizza will cost $' + cost);
+    console.log('Your pizza will cost $' + cost);
   });
 });
