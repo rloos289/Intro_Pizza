@@ -1,5 +1,5 @@
 //<!-- Back End -->
-// <!--************order contstructor/prototype************-->
+// <!--************order constructor/prototype************-->
 function Order (pizzas, cost) {
   this.pizzaArray = []
   this.costArray = []
@@ -47,7 +47,7 @@ Pizza.prototype.pizzaCost = function (psize, ptopping) {
 $(document).ready(function(){
   Order = new Order();
   pizzaNumber = 0
-  $('#pizzaOptions').submit(function(event){
+  $('#pizzaOptions').submit(function(event) {
     event.preventDefault();
 //gather info for object
     var toppings = [];
@@ -71,17 +71,30 @@ $(document).ready(function(){
         toppingOrCheese = 'cheese'
       }
       pizzaNumber += 1 ;
-      $('#pizzaList').append("<li class='plist' id=pizza" + pizzaNumber + '>' + pizza.psize + ' ' + toppingOrCheese + ' pizza: $' + pizza.pcost + '</li>');
+      $('#pizzaList').append("<li class='plist' id=pizza" + pizzaNumber + '>' + pizza.psize + ' ' + toppingOrCheese + ' pizza: $' + pizza.pcost +"<button class='btn btn-danger remove glyphicon glyphicon-minus' id='removeButton"  + pizzaNumber + "'></button>" +'</li>');
 //add pizza to Order
       Order.orderInfo(pizza, pizza.pcost);
-  }
-  // $('.plist').click(function() {
-  //   console.log(this.id);
-  // });
+//hide results and recalculate if neccesary
+      $('.end').hide();
+      $('#submitButton').show();
+      $('#totalcost').empty();
+      }
+//remove pizza button
+      $("button#removeButton" + pizzaNumber).click(function(){
+        $(this).parent().remove();
+        var removeIndex=(this.id).replace('removeButton','');
+        Order.costArray.splice(removeIndex-1,1,0);
+        $('.end').hide();
+        $('#submitButton').show();
+        $('#totalcost').empty();
+    });
+  $('.plist').click(function() {
+    console.log(this.id - 'pizza');
   });
+    });
 //get total cost
   $('#submitButton').click(function(event) {
-  event.preventDefault();
+    event.preventDefault();
     $('.end').show();
     $('#totalcost').append(Order.orderCost());
     $('#submitButton').hide();
