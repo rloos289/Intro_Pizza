@@ -1,12 +1,7 @@
-#interface {
-  margin-top: 40px;
-  text-align: center;
-}
+/*<!--************top************-->*/
 
-.end {
-  margin-top: 40px;
-  display: none;
-  text-align: center;
+body {
+  font-family: 'Paprika', cursive;
 }
 
 .jumbotron {
@@ -15,19 +10,6 @@
   font-family: 'Paprika', cursive;
   text-align: center;
   color: black;
-}
-
-body {
-  /*background-image: url('../img/mario.png');*/
-  font-family: 'Paprika', cursive;
-}
-
-#yourOrder h4{
-  text-align: center;
-}
-
-li {
-  list-style-type:none
 }
 
 #mario {
@@ -39,9 +21,24 @@ img {
   max-height: 80%;
 }
 
+/*<!--************order************-->*/
+
+.end {
+  margin-top: 40px;
+  display: none;
+  text-align: center;
+}
+
+#yourOrder h4{
+  text-align: center;
+}
+
+li {
+  list-style-type:none
+}
+
 .remove {
   float: right;
-
 }
 
 .plist {

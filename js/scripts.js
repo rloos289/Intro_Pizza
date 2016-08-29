@@ -1,14 +1,14 @@
 //<!-- Back End -->
 // <!--************order constructor/prototype************-->
 function Order (pizzas, cost) {
-  this.pizzaArray = []
-  this.costArray = []
+  this.pizzaArray = [];
+  this.costArray = [];
 }
 
 Order.prototype.orderInfo = function (pizza, cost) {
   Order.pizzaArray.push(pizza);
   Order.costArray.push(cost);
-}
+};
 
 function getCost(total, num) {
   return total + num;
@@ -16,10 +16,10 @@ function getCost(total, num) {
 
 Order.prototype.orderCost = function () {
   var finalCost = Order.costArray.reduce(getCost);
-  return finalCost
-}
+  return finalCost;
+};
 
-// <!--************pizza contstructor/prototype************-->
+// <!--************pizza constructor/prototype************-->
 function Pizza (size, topping, cost) {
   this.psize = size;
   this.ptopping = topping;
@@ -27,26 +27,26 @@ function Pizza (size, topping, cost) {
 }
 
 Pizza.prototype.pizzaCost = function (psize, ptopping) {
-  var cost = 0
+  var cost = 0;
   if (this.psize === 'small') {
-    cost += 8
+    cost += 8;
   } else if (this.psize === 'medium') {
-    cost += 12
+    cost += 12;
   } else if (this.psize === 'large') {
-    cost += 15
+    cost += 15;
   }
   if (this.ptopping) {
     for (var i = 0; i < this.ptopping.length; i++) {
-      cost +=2
+      cost +=2;
     }
   }
   this.pcost = cost;
-}
+};
 
 //<!-- Front End  -->
 $(document).ready(function(){
   Order = new Order();
-  pizzaNumber = 0
+  pizzaNumber = 0;
   $('#pizzaOptions').submit(function(event) {
     event.preventDefault();
 //gather info for object
@@ -55,22 +55,22 @@ $(document).ready(function(){
     var size = $('input[name=size]:checked').val();
     var toppingOrCheese = '';
     $('input[type=checkbox]:checked').each(function(i,e) {
-      toppings.push( $(e).attr('value'))
-      })
-    if (!size) {
-      alert('please choose a pizza size');
-    } else {
+      toppings.push( $(e).attr('value'));
+      });
+      if (!size) {
+        alert('please choose a pizza size');
+      } else {
       pizza = new Pizza (size, toppings, cost);
       cost = pizza.pizzaCost();
 //reset entry options
-      $('#pizzaOptions')[0].reset();;
+      $('#pizzaOptions')[0].reset();
 //append page with pizzas
       if (pizza.ptopping.length) {
-      toppingOrCheese = pizza.ptopping.length + ' topping'
+      toppingOrCheese = pizza.ptopping.length + ' topping';
       } else {
-        toppingOrCheese = 'cheese'
+        toppingOrCheese = 'cheese';
       }
-      pizzaNumber += 1 ;
+      pizzaNumber += 1;
       $('#pizzaList').append("<li class='plist' id=pizza" + pizzaNumber + '>' + pizza.psize + ' ' + toppingOrCheese + ' pizza: $' + pizza.pcost +"<button class='btn btn-danger remove glyphicon glyphicon-minus' id='removeButton"  + pizzaNumber + "'></button>" +'</li>');
 //add pizza to Order
       Order.orderInfo(pizza, pizza.pcost);
@@ -87,10 +87,7 @@ $(document).ready(function(){
         $('.end').hide();
         $('#submitButton').show();
         $('#totalcost').empty();
-    });
-  $('.plist').click(function() {
-    console.log(this.id - 'pizza');
-  });
+      });
     });
 //get total cost
   $('#submitButton').click(function(event) {
@@ -110,4 +107,13 @@ $(document).ready(function(){
     Order.costArray = [];
     Order.pizzaArray = [];
   });
+  $('#placeOrder').click(function(event) {
+    event.preventDefault();
+    alert("Hello? Can you see this? Oh thank god... itsa me Mario! No they didn't ask to use my likeness. Don't worry, we're going to sue these !@#%#@s for everything they've got");
+  });
 });
+
+
+// -how to fix global variables in this situation?
+// -better way to access cost in order object?
+// -pizzanumber var?
