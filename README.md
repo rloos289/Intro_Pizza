@@ -1,4 +1,4 @@
-# _Template_
+# _Pizza Shop_
 
 #### By _Ryan Loos_
 
@@ -27,8 +27,7 @@ _A website for ordering pizzas online_
 * _print final cost to screen_
 
 ## GitHub link
-https://github.com/rloos289/Pizza
-
+https://github.com/rloos289/Pizzahttp://rloos289.github.io/Pizza
 ## Licensing
 
 * MIT
